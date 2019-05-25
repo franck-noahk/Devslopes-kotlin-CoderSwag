@@ -1,15 +1,29 @@
 package com.noahfranck.coderswag.Adapter
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import com.noahfranck.coderswag.Model.Category
+import com.noahfranck.coderswag.R
 
 class CategoryAdapter (context: Context, category:List<Category>): BaseAdapter() {
+
     val context = context
     val categories = category
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val categoryView: View
+        categoryView = LayoutInflater.from(context).inflate(R.layout
+            .category_list_item,null)
+
+        val categoryImage: ImageView = categoryView.findViewById(R.id.categoryImage)
+        val categoryName: TextView = categoryView.findViewById(R.id.catageoryName)
+
+        return categoryView
     }
 
     override fun getItem(position: Int): Any {
