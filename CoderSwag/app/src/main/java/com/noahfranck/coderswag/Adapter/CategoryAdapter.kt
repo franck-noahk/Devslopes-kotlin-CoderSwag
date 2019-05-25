@@ -23,6 +23,10 @@ class CategoryAdapter (context: Context, category:List<Category>): BaseAdapter()
         val categoryImage: ImageView = categoryView.findViewById(R.id.categoryImage)
         val categoryName: TextView = categoryView.findViewById(R.id.catageoryName)
 
+        val category = categories[position]
+        
+
+        categoryName.text = category.title
         return categoryView
     }
 
