@@ -46,4 +46,9 @@ class CategoryAdapter (context: Context, category:List<Category>): BaseAdapter()
         return categories.count()
     }
 
+    private class ViewHolder {
+        var categoryImage: ImageView? = null
+        var categoryName: TextView? = null
+    }
+
 }
