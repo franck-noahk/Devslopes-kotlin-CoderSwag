@@ -8,3 +8,11 @@
 /build
 /captures
 .externalNativeBuild
+
+CoderSwag/\.idea/encodings\.xml
+
+CoderSwag/\.idea/codeStyles/Project\.xml
+
+CoderSwag/app/src/main/gen/com/noahfranck/coderswag/Manifest\.java
+
+CoderSwag/app/src/main/gen/com/noahfranck/coderswag/R\.java
