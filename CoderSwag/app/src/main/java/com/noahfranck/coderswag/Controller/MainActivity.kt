@@ -16,10 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = CategoryRecyclerAdapter(
-            DataService.categories,
-            this
-        )
+        adapter = CategoryRecyclerAdapter(DataService.categories, this){ category ->
+
+        }
 
         categoryListView.adapter = adapter
         //old implementation for previous adapter
@@ -27,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         categoryListView.layoutManager = layoutManager
         categoryListView.setHasFixedSize(true)
+
+        //Have to make our own onClickListener with a Lambda
 
     }
 }
