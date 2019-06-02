@@ -13,25 +13,27 @@ import com.noahfranck.coderswag.R
 
 class CategoryRecyclerAdapter(val categories: List<Category>, val context:Context) : RecyclerView.Adapter<CategoryRecyclerAdapter.Holder> () {
 
+    //this is run when there is no existing holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.category_list_item, parent, false)
         return Holder(view)
     }
-
+    //returns total number of avalible things
     override fun getItemCount(): Int {
         return categories.count()
     }
-
+    //Binds the holder to the category's position
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder?.bindCategory(categories[position], context)
 
     }
 
-
+    //class for the holder It establishes the IDs and binds them.
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryImage = itemView?.findViewById<ImageView>(R.id.categoryImage)
         val categoryName = itemView?.findViewById<TextView>(R.id.catageoryName)
 
+        //Function for binding the IDs to the holder
         fun bindCategory(category: Category, context: Context){
             val resourceId = context.resources.getIdentifier(category.image,"drawable", context.packageName)
             categoryImage?.setImageResource(resourceId)
