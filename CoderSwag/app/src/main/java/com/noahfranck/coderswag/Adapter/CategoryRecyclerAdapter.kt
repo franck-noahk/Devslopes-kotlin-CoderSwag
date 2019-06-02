@@ -11,12 +11,12 @@ import com.noahfranck.coderswag.Model.Category
 import com.noahfranck.coderswag.R
 
 
-class CategoryRecyclerAdapter(val categories: List<Category>, val context:Context) : RecyclerView.Adapter<CategoryRecyclerAdapter.Holder> () {
+class CategoryRecyclerAdapter(val categories: List<Category>, val context:Context, val itemClick: (Category) -> Unit) : RecyclerView.Adapter<CategoryRecyclerAdapter.Holder> () {
 
     //this is run when there is no existing holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.category_list_item, parent, false)
-        return Holder(view)
+        return Holder(view, itemClick)
     }
     //returns total number of avalible things
     override fun getItemCount(): Int {
@@ -29,7 +29,7 @@ class CategoryRecyclerAdapter(val categories: List<Category>, val context:Contex
     }
 
     //class for the holder It establishes the IDs and binds them.
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class Holder(itemView: View, val itemClick: (Category) -> Unit) : RecyclerView.ViewHolder(itemView) {
         val categoryImage = itemView?.findViewById<ImageView>(R.id.categoryImage)
         val categoryName = itemView?.findViewById<TextView>(R.id.catageoryName)
 
@@ -38,6 +38,7 @@ class CategoryRecyclerAdapter(val categories: List<Category>, val context:Contex
             val resourceId = context.resources.getIdentifier(category.image,"drawable", context.packageName)
             categoryImage?.setImageResource(resourceId)
             categoryName?.text = category.title
+            itemView.setOnClickListener{itemClick(category)}
 
         }
 
